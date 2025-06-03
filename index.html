@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayTimer+ | 儿童设备使用时间管理工具</title>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6459E5;
+            --primary-dark: #4F46C2;
+            --secondary: #B195EA;
+            --accent: #FF6B6B;
+            --text: #333333;
+            --text-light: #666666;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --dark: #222222;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.07);
+            padding: 15px 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 8px 5%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            margin-left: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        /* 英雄区域样式 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 180px 5% 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        
+        .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary);
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .button.secondary {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+        
+        .button.secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* 通用部分样式 */
+        section {
+            padding: 100px 5%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-subtitle {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        /* 关于部分样式 */
+        .about {
+            background-color: var(--white);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .about-image::before {
+            content: '';
+            display: block;
+            padding-top: 75%; /* 4:3 宽高比 */
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--border-radius);
+        }
+        
+        .about-image::after {
+            content: '\f017';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        /* 特性部分样式 */
+        .features {
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--white);
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 10px 20px rgba(100, 89, 229, 0.3);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+        }
+        
+        /* 为什么选择我们部分样式 */
+        .why-us {
+            background-color: var(--white);
+        }
+        
+        .why-us-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .why-us-image {
+            flex: 1;
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .why-us-image::before {
+            content: '';
+            display: block;
+            padding-top: 75%; /* 4:3 宽高比 */
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: var(--border-radius);
+        }
+        
+        .why-us-image::after {
+            content: '\f5a2';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .why-us-text {
+            flex: 1;
+        }
+        
+        .why-us-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        /* 隐私政策部分样式 */
+        .privacy {
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        .privacy-container {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 50px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .privacy-section {
+            margin-bottom: 40px;
+        }
+        
+        .privacy-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .privacy-section h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .privacy-section h4 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin: 25px 0 15px;
+        }
+        
+        .privacy-section p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .privacy-section ul, .privacy-section ol {
+            margin-bottom: 15px;
+            margin-left: 20px;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .privacy-section strong {
+            color: var(--text);
+        }
+        
+        .last-updated {
+            margin-top: 30px;
+            color: #777;
+            font-style: italic;
+            text-align: right;
+        }
+        
+        /* 联系我们部分样式 */
+        .contact {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .contact .section-title {
+            color: white;
+        }
+        
+        .contact .section-title::after {
+            background: var(--white);
+        }
+        
+        .contact-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .contact-info {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        
+        .contact-email {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+        
+        .contact-email:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+        
+        .contact-email i {
+            margin-right: 10px;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .footer-links {
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-content, .why-us-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .why-us-image {
+                max-width: 80%;
+                margin: 0 auto 40px;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .privacy-container {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                padding: 20px;
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                transform: translateY(-100%);
+                transition: var(--transition);
+                opacity: 0;
+                z-index: 999;
+            }
+            
+            .mobile-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .hero {
+                padding: 150px 5% 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            section {
+                padding: 70px 5%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .about-image, .why-us-image {
+                max-width: 100%;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .privacy-container {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-clock"></i>
+            <span>PlayTimer+</span>
+        </a>
+        <div class="nav-links">
+            <a href="#about">关于</a>
+            <a href="#features">功能</a>
+            <a href="#why-us">为什么选择我们</a>
+            <a href="#privacy">隐私政策</a>
+            <a href="#contact">联系我们</a>
+        </div>
+        <div class="mobile-menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <!-- 移动导航菜单 -->
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#about">关于</a>
+        <a href="#features">功能</a>
+        <a href="#why-us">为什么选择我们</a>
+        <a href="#privacy">隐私政策</a>
+        <a href="#contact">联系我们</a>
+    </div>
+    
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>PlayTimer+</h1>
+            <p class="tagline">专业的儿童设备使用时间管理工具，帮助父母合理安排孩子的屏幕使用时间</p>
+            <div class="hero-buttons">
+                <a href="#" class="button">即将登陆App Store</a>
+                <a href="#privacy" class="button secondary">阅读隐私政策</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 关于部分 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">了解我们</p>
+                <h2 class="section-title">关于PlayTimer+</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image"></div>
+                <div class="about-text">
+                    <p>PlayTimer+是一款功能强大的时间管理应用，专为家长设计，帮助您合理控制孩子的设备使用时间。通过设置不同的时间段和限制，您可以帮助孩子养成健康的电子设备使用习惯。</p>
+                    <p>无论是学习时间、休息时间还是睡眠时间，PlayTimer+都能帮助您轻松管理，确保孩子在合适的时间做合适的事情，避免过度使用电子设备。</p>
+                    <p>我们的核心理念是"平衡数字生活"，让科技服务于健康成长，而不是成为阻碍。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 特性部分 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">我们的强大功能</p>
+                <h2 class="section-title">主要功能</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>时间段管理</h3>
+                    <p>为不同的活动创建自定义时间段，如学习时间、休息时间和睡眠时间，每个时间段可以设置不同的应用限制规则。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h3>应用限制</h3>
+                    <p>选择在特定时间段内限制哪些应用程序，让孩子专注于学习或休息，避免沉迷游戏和社交媒体。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>灵活的重复设置</h3>
+                    <p>支持每天、工作日、周末或自定义日期重复模式，满足不同家庭的需求，轻松应对各种场景。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>提醒通知</h3>
+                    <p>在时间段开始和结束时发送通知提醒，帮助孩子养成良好的时间观念，主动遵守使用规则。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>家长密码保护</h3>
+                    <p>使用密码保护设置页面，防止孩子自行更改限制规则，确保家长的管理策略得到有效执行。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>使用状态查看</h3>
+                    <p>随时查看当前设备限制状态，掌握孩子的设备使用情况，为进一步调整管理策略提供参考。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 为什么选择我们部分 -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">我们的优势</p>
+                <h2 class="section-title">为什么选择PlayTimer+</h2>
+            </div>
+            <div class="why-us-content">
+                <div class="why-us-text">
+                    <p>在当今数字化时代，孩子们越来越早地接触电子设备，如何平衡孩子的屏幕时间成为许多家长面临的挑战。PlayTimer+通过直观的界面和强大的功能，帮助家长轻松管理孩子的设备使用时间，培养健康的使用习惯。</p>
+                    <p>我们注重<strong>隐私保护</strong>，所有数据均存储在本地设备上，不会上传到云端，确保您和孩子的隐私安全。应用设计简洁易用，无需复杂设置即可快速上手。</p>
+                    <p>选择PlayTimer+，就是选择一种健康、平衡的数字生活方式，为孩子的成长保驾护航。</p>
+                </div>
+                <div class="why-us-image"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 隐私政策部分 -->
+    <section class="privacy" id="privacy">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">信息保护</p>
+                <h2 class="section-title">隐私政策</h2>
+            </div>
+            <div class="privacy-container">
+                <div class="privacy-section">
+                    <h3>概述</h3>
+                    <p>本隐私政策旨在帮助您了解 PlayTimer+（以下简称"我们"、"应用"）如何收集、使用和保护您在使用我们的应用时提供的信息。我们高度重视您的隐私，并致力于保护您和您孩子的个人数据。</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h3>信息收集</h3>
+                    <p>PlayTimer+ 是一款专注于设备使用时间管理的本地应用程序，我们遵循最小化数据收集原则：</p>
+                    
+                    <h4>自动收集的信息</h4>
+                    <ul>
+                        <li><strong>设备使用统计数据</strong>：为了执行时间管理功能，我们会收集设备上应用使用的相关信息，包括应用使用时间和模式。</li>
+                        <li><strong>设备信息</strong>：我们可能收集基本设备信息如设备型号、操作系统版本和唯一设备标识符，仅用于应用程序功能和优化目的。</li>
+                    </ul>
+                    
+                    <h4>您主动提供的信息</h4>
+                    <ul>
+                        <li><strong>时间段设置</strong>：您创建的时间段、时间限制和与特定应用相关的规则。</li>
+                        <li><strong>访问密码</strong>：如果您设置了家长访问密码，该密码将以加密形式存储在本地设备上。</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h3>信息使用</h3>
+                    <p>我们收集的所有信息仅用于以下目的：</p>
+                    <ol>
+                        <li>提供、维护和改进我们的应用程序功能，特别是时间管理功能。</li>
+                        <li>执行您设置的应用使用限制和时间段规则。</li>
+                        <li>根据您的设置发送本地通知和提醒。</li>
+                        <li>诊断和解决可能出现的技术问题。</li>
+                    </ol>
+                </div>
+                
+                <div class="privacy-section">
+                    <h3>数据存储和安全</h3>
+                    <p><strong>重要说明：所有数据均存储在您设备的本地存储中，不会上传到云端或我们的服务器。</strong></p>
+                    <p>我们实施了适当的技术和组织措施，以保护您的数据免受意外或非法破坏、丢失、更改或未经授权访问。</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h3>数据共享</h3>
+                    <p>由于所有数据都存储在本地设备上，PlayTimer+ 不会与任何第三方共享您的个人数据，除非：</p>
+                    <ul>
+                        <li>在必要的情况下，与提供分析或开发支持的服务提供商合作（如果有）。</li>
+                        <li>为遵守适用法律、法规或法律程序。</li>
+                        <li>为保护我们或用户的权利、安全或财产。</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h3>儿童隐私</h3>
+                    <p>PlayTimer+ 是一款专为有孩子的家长设计的应用程序。我们了解在处理与儿童相关的数据时需要特别小心：</p>
+                    <ul>
+                        <li>我们不会有意收集13岁以下儿童的个人身份信息。</li>
+                        <li>应用使用数据仅用于为家长提供孩子的设备使用情况，并允许家长设置适当的限制。</li>
+                        <li>所有数据仅存储在设备本地，不会用于定向广告或营销目的。</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h3>您的选择和权利</h3>
+                    <p>作为用户，您拥有以下权利：</p>
+                    <ul>
+                        <li>随时在设备设置中卸载我们的应用，这将删除与应用相关的所有本地数据。</li>
+                        <li>通过应用内重置功能，删除所有已创建的时间段和限制设置。</li>
+                        <li>更改或删除您设置的任何访问密码。</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h3>隐私政策更新</h3>
+                    <p>我们可能会不时更新本隐私政策。当我们进行更改时，我们会更新本页面顶部的"最后更新"日期，并在应用程序中提供通知。我们鼓励您定期查看本隐私政策，以了解我们如何保护您的信息。</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h3>联系我们</h3>
+                    <p>如果您对本隐私政策或我们的隐私实践有任何问题、意见或请求，请通过以下方式联系我们：</p>
+                    <p>电子邮件：<a href="mailto:jiangfei2013@icloud.com">jiangfei2013@icloud.com</a></p>
+                </div>
+                
+                <p class="last-updated">最后更新日期：2025年6月1日</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 联系我们部分 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">联系方式</p>
+                <h2 class="section-title">联系我们</h2>
+            </div>
+            <div class="contact-content">
+                <p class="contact-info">如果您有任何问题、建议或合作意向，欢迎随时联系我们。<br>我们将竭诚为您提供帮助和支持。</p>
+                <a href="mailto:jiangfei2013@icloud.com" class="contact-email"><i class="fas fa-envelope"></i>jiangfei2013@icloud.com</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-links">
+            <a href="#about">关于我们</a>
+            <a href="#features">功能特色</a>
+            <a href="#privacy">隐私政策</a>
+            <a href="#contact">联系我们</a>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p class="copyright">&copy; 2025 PlayTimer+. 保留所有权利。</p>
+    </footer>
+    
+    <!-- 返回顶部按钮 -->
+    <a href="#" class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('back-to-top');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // 移动端菜单切换
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        let mobileMenuOpen = false;
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            if (mobileMenuOpen) {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            } else {
+                mobileNav.classList.add('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            }
+            mobileMenuOpen = !mobileMenuOpen;
+        });
+        
+        // 关闭移动菜单
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuOpen = false;
+            });
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
