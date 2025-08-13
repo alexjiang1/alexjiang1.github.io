@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - PlayTimer+</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6459E5;
+            --primary-dark: #4F46C2;
+            --secondary: #B195EA;
+            --accent: #FF6B6B;
+            --text: #333333;
+            --text-light: #666666;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --dark: #222222;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.7;
+            background-color: var(--light-bg);
+            padding: 0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/><circle cx="30" cy="30" r="1" fill="white" opacity="0.2"/><circle cx="70" cy="70" r="1.5" fill="white" opacity="0.2"/></svg>');
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            transition: var(--transition);
+            z-index: 3;
+        }
+        
+        .back-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-5px);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .content {
+            background: white;
+            margin: -30px auto 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 60px;
+            position: relative;
+        }
+        
+        .terms-section {
+            margin-bottom: 50px;
+        }
+        
+        .terms-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .terms-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary);
+            position: relative;
+        }
+        
+        .terms-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .terms-section h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin: 30px 0 20px;
+            font-weight: 600;
+        }
+        
+        .terms-section p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .terms-section ul, .terms-section ol {
+            margin-bottom: 25px;
+            margin-left: 30px;
+        }
+        
+        .terms-section li {
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .terms-section strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+        
+        .highlight-box p {
+            color: white;
+            margin-bottom: 0;
+            font-size: 1.15rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subscription-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 35px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .subscription-box h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .subscription-box ul {
+            margin-left: 20px;
+        }
+        
+        .subscription-box li {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 12px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #fdcb6e;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin: 25px 0;
+        }
+        
+        .warning-box p {
+            color: #856404;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+        
+        .last-updated {
+            margin-top: 50px;
+            padding: 25px;
+            background: var(--light-bg);
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-style: italic;
+            color: var(--text-light);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .contact-info {
+            background: white;
+            border: 2px solid var(--secondary);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .contact-info h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+        
+        .contact-info a:hover {
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1rem;
+            }
+            
+            .content {
+                margin: -20px 20px 30px;
+                padding: 40px 30px;
+            }
+            
+            .back-link {
+                position: static;
+                display: inline-flex;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .terms-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Home</span>
+        </a>
+        <div class="container">
+            <h1>Terms of Use</h1>
+            <p class="subtitle">Please read these terms carefully</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="content">
+            <div class="terms-section">
+                <h2>Acceptance of Terms</h2>
+                <p>By downloading, installing, or using the PlayTimer+ application (the "App"), you agree to be bound by these Terms of Use ("Terms"). If you do not agree to these Terms, please do not download, install, or use the App.</p>
+                <p>These Terms constitute a legally binding agreement between you ("User" or "you") and the developer of PlayTimer+ ("we," "us," or "our").</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>App Description and Purpose</h2>
+                <p>PlayTimer+ is a parental control application designed to help parents manage their children's device usage time. The App utilizes Apple's Family Controls framework to provide the following functionality:</p>
+                <ul>
+                    <li><strong>Screen Time Management</strong>: Set daily usage limits for specific applications or categories</li>
+                    <li><strong>Custom Time Slots</strong>: Create time-based restrictions for different periods of the day</li>
+                    <li><strong>Usage Monitoring</strong>: Track and analyze device usage patterns and statistics</li>
+                    <li><strong>App Access Control</strong>: Block or restrict access to specific applications during defined periods</li>
+                    <li><strong>Parental Authentication</strong>: Secure settings with password or biometric authentication</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Subscription Services and Pricing</h2>
+                
+                <div class="subscription-box">
+                    <h3>Available Subscription Plans</h3>
+                    <ul>
+                        <li><strong>Monthly Subscription</strong>: Auto-renewing monthly subscription</li>
+                        <li><strong>Annual Subscription</strong>: Auto-renewing yearly subscription with savings</li>
+                        <li><strong>Lifetime Purchase</strong>: One-time purchase for permanent access</li>
+                    </ul>
+                </div>
+                
+                <h3>Subscription Terms and Conditions</h3>
+                <ol>
+                    <li><strong>Auto-Renewal</strong>: Subscriptions automatically renew unless you cancel at least 24 hours before the current subscription period ends.</li>
+                    <li><strong>Billing</strong>: Payment will be charged to your iTunes Account upon confirmation of purchase.</li>
+                    <li><strong>Renewal Charges</strong>: Your account will be charged for renewal within 24 hours prior to the end of the current period.</li>
+                    <li><strong>Subscription Management</strong>: You can manage and cancel subscriptions by going to your Account Settings after purchase.</li>
+                    <li><strong>Price Changes</strong>: Subscription prices may change with advance notice as required by applicable law.</li>
+                </ol>
+                
+                <h3>Free Trial Period</h3>
+                <ul>
+                    <li><strong>Trial Duration</strong>: New users may receive a 5-day free trial period</li>
+                    <li><strong>Auto-Conversion</strong>: If not canceled 24 hours before the trial ends, the trial will automatically convert to a paid subscription</li>
+                    <li><strong>Cancellation</strong>: You may cancel during the trial period without charge</li>
+                    <li><strong>One-Time Offer</strong>: Free trials are typically limited to one per user/Apple ID</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Permitted Use</h2>
+                <p>You are granted a limited, non-exclusive, non-transferable license to use PlayTimer+ for the following purposes:</p>
+                <ul>
+                    <li><strong>Personal and Family Use</strong>: Managing screen time for your household and family members</li>
+                    <li><strong>Parental Control</strong>: Supervising and controlling minor children's device usage</li>
+                    <li><strong>Educational Purposes</strong>: Using the app to teach healthy digital habits</li>
+                    <li><strong>Compliance</strong>: Using all features in accordance with the app's intended design and these Terms</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Prohibited Activities</h2>
+                <p>You agree not to engage in any of the following prohibited activities:</p>
+                <ul>
+                    <li><strong>Commercial Use</strong>: Using the app for commercial purposes without explicit written permission</li>
+                    <li><strong>Reverse Engineering</strong>: Attempting to reverse engineer, decompile, or disassemble the application</li>
+                    <li><strong>Security Bypass</strong>: Circumventing or attempting to bypass security features or parental controls</li>
+                    <li><strong>Unauthorized Access</strong>: Attempting to gain unauthorized access to restricted features or data</li>
+                    <li><strong>Harmful Activities</strong>: Using the app for any illegal, harmful, or malicious purposes</li>
+                    <li><strong>Data Misuse</strong>: Misusing or attempting to extract user data beyond normal app functionality</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Parental Responsibility and Child Safety</h2>
+                <div class="warning-box">
+                    <p><strong>Important:</strong> As a parent or guardian, you are responsible for the appropriate use of this application and the safety of your children.</p>
+                </div>
+                <p>Your responsibilities include:</p>
+                <ul>
+                    <li><strong>Age-Appropriate Settings</strong>: Ensuring time limits and restrictions are reasonable and appropriate for your child's age and development</li>
+                    <li><strong>Educational Balance</strong>: Maintaining a balance between screen time restrictions and educational needs</li>
+                    <li><strong>Password Security</strong>: Keeping parental control passwords secure and away from children</li>
+                    <li><strong>Regular Review</strong>: Periodically reviewing and adjusting settings as your child grows and their needs change</li>
+                    <li><strong>Emergency Access</strong>: Ensuring children can access devices for emergencies when necessary</li>
+                    <li><strong>Communication</strong>: Discussing digital wellness and the reasons for restrictions with your children</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Technical Requirements and Compatibility</h2>
+                <ul>
+                    <li><strong>iOS Version</strong>: iOS 18.4 or later</li>
+                    <li><strong>Device Compatibility</strong>: iPhone and iPad devices</li>
+                    <li><strong>Family Controls</strong>: Requires Family Controls permission and setup</li>
+                    <li><strong>Storage</strong>: Adequate device storage space for app installation and data</li>
+                    <li><strong>Network</strong>: Internet connection required for initial setup and subscription management</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Disclaimers and Limitations</h2>
+                
+                <h3>Service Availability</h3>
+                <ul>
+                    <li>The app is provided "as is" without warranties of any kind</li>
+                    <li>We do not guarantee 100% uptime or error-free operation</li>
+                    <li>Apple system updates may affect app functionality</li>
+                    <li>Features may be limited by iOS system restrictions</li>
+                </ul>
+                
+                <h3>Limitation of Liability</h3>
+                <div class="highlight-box">
+                    <p>To the maximum extent permitted by law, we shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages resulting from your use of the app, including but not limited to damages for loss of data, device malfunction, or any other commercial damages or losses.</p>
+                </div>
+                
+                <h3>Family Controls Dependency</h3>
+                <p>PlayTimer+ relies on Apple's Family Controls framework. Changes to this system by Apple may affect app functionality. We are not responsible for limitations or changes imposed by Apple's system updates.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Refund and Cancellation Policy</h2>
+                <ul>
+                    <li><strong>App Store Policies</strong>: All purchases and refunds are processed through Apple's App Store and subject to Apple's refund policies</li>
+                    <li><strong>Refund Requests</strong>: Refund requests must be submitted through Apple Customer Support</li>
+                    <li><strong>Subscription Cancellation</strong>: Subscriptions can be canceled through iOS Settings → Apple ID → Subscriptions</li>
+                    <li><strong>Trial Period</strong>: Free trials can be canceled anytime during the trial period without charge</li>
+                    <li><strong>Prorated Refunds</strong>: We follow Apple's guidelines regarding prorated refunds for subscription cancellations</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Intellectual Property Rights</h2>
+                <p>All content, features, and functionality of PlayTimer+, including but not limited to:</p>
+                <ul>
+                    <li>Software code and architecture</li>
+                    <li>User interface design and graphics</li>
+                    <li>Logos, trademarks, and branding</li>
+                    <li>Documentation and help materials</li>
+                    <li>Algorithms and methodologies</li>
+                </ul>
+                <p>are owned by us and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Privacy and Data Protection</h2>
+                <p>Your privacy is important to us. Please review our comprehensive <a href="privacy.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">Privacy Policy</a> to understand how we collect, use, and protect your information.</p>
+                <p>Key privacy highlights:</p>
+                <ul>
+                    <li>All data is stored locally on your device</li>
+                    <li>No personal information is transmitted to external servers</li>
+                    <li>We comply with applicable privacy laws and regulations</li>
+                    <li>Children's privacy is specially protected according to COPPA guidelines</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Updates and Modifications</h2>
+                <h3>App Updates</h3>
+                <ul>
+                    <li>We may provide updates to improve functionality, security, or compatibility</li>
+                    <li>Updates may be automatic or require manual installation</li>
+                    <li>Some updates may change app behavior or features</li>
+                    <li>Continued use after updates constitutes acceptance of changes</li>
+                </ul>
+                
+                <h3>Terms Modifications</h3>
+                <p>We reserve the right to modify these Terms at any time. When we make changes:</p>
+                <ul>
+                    <li>We will update the "Last updated" date</li>
+                    <li>Significant changes will be communicated through the app</li>
+                    <li>Your continued use constitutes acceptance of modified terms</li>
+                    <li>If you disagree with changes, you should stop using the app</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Termination</h2>
+                <h3>Termination by User</h3>
+                <ul>
+                    <li>You may stop using the app and delete it at any time</li>
+                    <li>Subscription cancellations must be done through Apple's system</li>
+                    <li>Deletion of the app removes all local data</li>
+                </ul>
+                
+                <h3>Termination by Developer</h3>
+                <p>We may terminate or suspend access to the app if you:</p>
+                <ul>
+                    <li>Violate these Terms of Use</li>
+                    <li>Engage in prohibited activities</li>
+                    <li>Use the app in ways that could harm other users or our services</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Governing Law and Dispute Resolution</h2>
+                <p>These Terms are governed by and construed in accordance with applicable laws. Any disputes arising from these Terms or your use of the app will be resolved through:</p>
+                <ol>
+                    <li><strong>Good Faith Negotiation</strong>: Initial attempt to resolve disputes through direct communication</li>
+                    <li><strong>Mediation</strong>: If negotiation fails, disputes may be submitted to mediation</li>
+                    <li><strong>Legal Proceedings</strong>: As a last resort, disputes may be resolved in courts of competent jurisdiction</li>
+                </ol>
+            </div>
+            
+            <div class="terms-section">
+                <h2>Contact Information</h2>
+                <p>If you have any questions, concerns, or requests regarding these Terms of Use, please contact us:</p>
+                
+                <div class="contact-info">
+                    <h3>Developer Contact</h3>
+                    <p><strong>Developer:</strong> Fei Jiang</p>
+                    <a href="mailto:jiangfei2013@icloud.com">
+                        <i class="fas fa-envelope"></i>
+                        jiangfei2013@icloud.com
+                    </a>
+                    <p style="margin-top: 15px; color: var(--text-light); font-size: 0.95rem;">
+                        We aim to respond to all inquiries within 48 hours.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="last-updated">
+                <p><strong>Last updated:</strong> August 13, 2025</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">
+                    These terms are effective immediately and apply to all users of PlayTimer+.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

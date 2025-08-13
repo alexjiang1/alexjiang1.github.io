@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - PlayTimer+</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6459E5;
+            --primary-dark: #4F46C2;
+            --secondary: #B195EA;
+            --accent: #FF6B6B;
+            --text: #333333;
+            --text-light: #666666;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --dark: #222222;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.7;
+            background-color: var(--light-bg);
+            padding: 0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="3" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            transition: var(--transition);
+            z-index: 3;
+        }
+        
+        .back-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-5px);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .content {
+            background: white;
+            margin: -30px auto 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 60px;
+            position: relative;
+        }
+        
+        .privacy-section {
+            margin-bottom: 50px;
+        }
+        
+        .privacy-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .privacy-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            position: relative;
+        }
+        
+        .privacy-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .privacy-section h3 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin: 30px 0 20px;
+            font-weight: 600;
+        }
+        
+        .privacy-section p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .privacy-section ul, .privacy-section ol {
+            margin-bottom: 25px;
+            margin-left: 30px;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .privacy-section strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+        
+        .highlight-box p {
+            color: white;
+            margin-bottom: 0;
+            font-size: 1.15rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .last-updated {
+            margin-top: 50px;
+            padding: 25px;
+            background: var(--light-bg);
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-style: italic;
+            color: var(--text-light);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .contact-info {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+        
+        .contact-info a:hover {
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1rem;
+            }
+            
+            .content {
+                margin: -20px 20px 30px;
+                padding: 40px 30px;
+            }
+            
+            .back-link {
+                position: static;
+                display: inline-flex;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .privacy-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Home</span>
+        </a>
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p class="subtitle">Your privacy is our priority</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="content">
+            <div class="privacy-section">
+                <h2>Overview</h2>
+                <p>This Privacy Policy is designed to help you understand how PlayTimer+ (hereinafter referred to as "we," "app") collects, uses, and protects the information you provide when using our application. We highly value your privacy and are committed to protecting the personal data of you and your children.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>Information Collection</h2>
+                <p>PlayTimer+ is a local application focused on device usage time management, following the principle of minimizing data collection:</p>
+                
+                <h3>Automatically Collected Information</h3>
+                <ul>
+                    <li><strong>Device Usage Statistics</strong>: To perform time management functions, we collect information related to app usage on the device through iOS Family Controls framework, including app usage time and patterns. This data is processed locally on your device.</li>
+                    <li><strong>Device Information</strong>: We may collect basic device information such as device model, operating system version, and unique device identifiers, solely for application functionality and optimization purposes.</li>
+                </ul>
+                
+                <h3>Information You Actively Provide</h3>
+                <ul>
+                    <li><strong>Time Slot Settings</strong>: Time slots you create, time limits, and rules related to specific applications.</li>
+                    <li><strong>Access Password</strong>: If you set a parental access password, it will be stored securely on the local device.</li>
+                    <li><strong>App Selection</strong>: Applications you choose to restrict or monitor through the Family Controls interface.</li>
+                    <li><strong>Usage Preferences</strong>: Your customized settings and preferences for the application interface and functionality.</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>Information Usage</h2>
+                <p>All information we collect is used only for the following purposes:</p>
+                <ol>
+                    <li><strong>Core Functionality</strong>: Providing, maintaining, and improving our application functions, especially time management and parental control features.</li>
+                    <li><strong>Restriction Implementation</strong>: Implementing app usage restrictions and time slot rules you set through iOS Family Controls framework.</li>
+                    <li><strong>Local Notifications</strong>: Sending local notifications and reminders according to your settings.</li>
+                    <li><strong>Technical Support</strong>: Diagnosing and resolving technical issues that may arise.</li>
+                    <li><strong>Feature Enhancement</strong>: Understanding usage patterns to improve app functionality and user experience.</li>
+                </ol>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>Data Storage and Security</h2>
+                <div class="highlight-box">
+                    <p><strong>Important Note: All data is stored in your device's local storage and is not uploaded to the cloud or our servers.</strong> Your family's privacy is completely protected.</p>
+                </div>
+                <p>We implement appropriate technical and organizational measures to protect your data:</p>
+                <ul>
+                    <li><strong>Local Storage</strong>: All user data and settings are stored locally using iOS secure storage mechanisms.</li>
+                    <li><strong>Security Protection</strong>: Sensitive information such as passwords are protected using iOS secure storage mechanisms.</li>
+                    <li><strong>Access Control</strong>: The app uses iOS security features to prevent unauthorized access to stored data.</li>
+                    <li><strong>Data Isolation</strong>: App data is isolated from other applications through iOS sandboxing.</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>Data Sharing</h2>
+                <p>Since all data is stored on the local device, PlayTimer+ does not share your personal data with any third parties, except:</p>
+                <ul>
+                    <li><strong>Apple Services</strong>: Integration with Apple's Family Controls and App Store services for subscription management.</li>
+                    <li><strong>Legal Compliance</strong>: When required to comply with applicable laws, regulations, or legal processes.</li>
+                    <li><strong>Safety Protection</strong>: To protect our rights, safety, or property, or those of users when legally required.</li>
+                </ul>
+                <p><strong>We do not sell, rent, or trade your personal information to third parties for marketing purposes.</strong></p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>Children's Privacy</h2>
+                <p>PlayTimer+ is an application designed for parents with children. We understand the need for special care when handling data related to children:</p>
+                <ul>
+                    <li><strong>No Personal Data Collection</strong>: We do not knowingly collect personally identifiable information from children under 13.</li>
+                    <li><strong>Parental Control</strong>: App usage data is used only to provide parents with information about their children's device usage and to allow parents to set appropriate restrictions.</li>
+                    <li><strong>Local Processing</strong>: All data is stored locally on the device and is not used for targeted advertising or marketing purposes.</li>
+                    <li><strong>Family Controls Compliance</strong>: We use Apple's Family Controls framework in accordance with Apple's privacy guidelines for child safety.</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>Subscription and Purchase Information</h2>
+                <p>For users who purchase premium features:</p>
+                <ul>
+                    <li><strong>App Store Processing</strong>: All subscription and purchase transactions are processed through Apple's App Store, subject to Apple's privacy policy.</li>
+                    <li><strong>Subscription Management</strong>: Subscription status is managed locally on your device and through your Apple ID account.</li>
+                    <li><strong>No Payment Data Storage</strong>: We do not store or have access to your payment information, which is securely handled by Apple.</li>
+                    <li><strong>Purchase History</strong>: Purchase history is available through your Apple ID account settings.</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>Your Choices and Rights</h2>
+                <p>As a user, you have the following rights and choices:</p>
+                <ul>
+                    <li><strong>Data Deletion</strong>: Uninstall our application at any time in your device settings, which will delete all local data associated with the application.</li>
+                    <li><strong>Settings Reset</strong>: Delete all created time slots and restriction settings through the in-app reset function.</li>
+                    <li><strong>Password Management</strong>: Change or delete any access password you have set at any time.</li>
+                    <li><strong>Permission Control</strong>: Manage app permissions through iOS Settings, including Family Controls access.</li>
+                    <li><strong>Notification Control</strong>: Enable or disable notifications through iOS Settings or in-app preferences.</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>Privacy Policy Updates</h2>
+                <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make changes:</p>
+                <ul>
+                    <li>We will update the "Last updated" date at the bottom of this page</li>
+                    <li>For significant changes, we will provide notification within the application</li>
+                    <li>We encourage you to review this Privacy Policy periodically</li>
+                    <li>Your continued use of the app after changes constitutes acceptance of the updated policy</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, comments, or requests regarding this Privacy Policy or our privacy practices, please don't hesitate to contact us:</p>
+                
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><strong>Developer:</strong> Fei Jiang</p>
+                    <a href="mailto:jiangfei2013@icloud.com">
+                        <i class="fas fa-envelope"></i>
+                        jiangfei2013@icloud.com
+                    </a>
+                    <p style="margin-top: 15px; color: var(--text-light); font-size: 0.95rem;">
+                        We typically respond to privacy inquiries within 48 hours.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="last-updated">
+                <p><strong>Last updated:</strong> August 13, 2025</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">
+                    This policy is effective immediately and applies to all users of PlayTimer+.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
