@@ -1,419 +1,615 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - PatLock</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Privacy Policy - PlayTimer+ | 隐私政策</title>
+    <meta name="description" content="PlayTimer+ Privacy Policy - Your privacy is our priority | PlayTimer+ 隐私政策 - 您的隐私对我们至关重要">
     <style>
-        :root {
-            --primary: #6459E5;
-            --primary-dark: #4F46C2;
-            --secondary: #B195EA;
-            --accent: #FF6B6B;
-            --text: #333333;
-            --text-light: #666666;
-            --light-bg: #f8f9fa;
-            --white: #ffffff;
-            --dark: #222222;
-            --border-radius: 12px;
-            --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --transition: all 0.3s ease;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         
         body {
-            color: var(--text);
-            line-height: 1.7;
-            background-color: var(--light-bg);
-            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f7;
+            padding: 20px;
         }
         
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 60px 0 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="3" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.1"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .header .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .back-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: white;
-            text-decoration: none;
+        .language-switcher {
+            max-width: 800px;
+            margin: 0 auto 20px;
             display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 15px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 25px;
-            transition: var(--transition);
-            z-index: 3;
+            justify-content: flex-end;
+            gap: 10px;
         }
         
-        .back-link:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateX(-5px);
+        .lang-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 2px solid #007AFF;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #007AFF;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: #007AFF;
+            color: white;
+        }
+        
+        .lang-btn.active {
+            background: #007AFF;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
         }
         
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .content {
             background: white;
-            margin: -30px auto 50px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 60px;
-            position: relative;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .privacy-section {
-            margin-bottom: 50px;
-        }
-        
-        .privacy-section:last-child {
-            margin-bottom: 0;
-        }
-        
-        .privacy-section h2 {
-            font-size: 1.8rem;
-            color: var(--primary-dark);
-            margin-bottom: 25px;
+        h1 {
+            font-size: 32px;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #007AFF;
             padding-bottom: 15px;
-            border-bottom: 2px solid var(--primary);
-            position: relative;
-        }
-        
-        .privacy-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: var(--accent);
-        }
-        
-        .privacy-section h3 {
-            font-size: 1.4rem;
-            color: var(--secondary);
-            margin: 30px 0 20px;
-            font-weight: 600;
-        }
-        
-        .privacy-section p {
-            margin-bottom: 20px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        
-        .privacy-section ul, .privacy-section ol {
-            margin-bottom: 25px;
-            margin-left: 30px;
-        }
-        
-        .privacy-section li {
-            margin-bottom: 15px;
-            color: var(--text-light);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-        
-        .privacy-section strong {
-            color: var(--text);
-            font-weight: 600;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            margin: 30px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .highlight-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-        }
-        
-        .highlight-box p {
-            color: white;
-            margin-bottom: 0;
-            font-size: 1.15rem;
-            font-weight: 500;
-            position: relative;
-            z-index: 2;
         }
         
         .last-updated {
-            margin-top: 50px;
-            padding: 25px;
-            background: var(--light-bg);
-            border-radius: var(--border-radius);
-            text-align: center;
-            font-style: italic;
-            color: var(--text-light);
-            border-left: 4px solid var(--accent);
+            color: #86868b;
+            font-size: 14px;
+            margin-bottom: 30px;
         }
         
-        .contact-info {
-            background: white;
-            border: 2px solid var(--primary);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .contact-info h3 {
-            color: var(--primary);
+        h2 {
+            font-size: 24px;
+            color: #1d1d1f;
+            margin-top: 40px;
             margin-bottom: 15px;
+            border-left: 4px solid #007AFF;
+            padding-left: 15px;
         }
         
-        .contact-info a {
-            color: var(--primary);
+        h3 {
+            font-size: 20px;
+            color: #1d1d1f;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #1d1d1f;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            color: #1d1d1f;
+        }
+        
+        .highlight {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #007AFF;
+        }
+        
+        .positive {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .negative {
+            background-color: #ffebee;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #f44336;
+        }
+        
+        .checkmark {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .xmark {
+            color: #f44336;
+            font-weight: bold;
+        }
+        
+        .contact {
+            background-color: #f5f5f7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        a {
+            color: #007AFF;
             text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
         }
         
-        .contact-info a:hover {
-            color: var(--primary-dark);
-            transform: translateY(-2px);
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
         }
         
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2rem;
+            .container {
+                padding: 20px;
             }
             
-            .header .subtitle {
-                font-size: 1rem;
+            .language-switcher {
+                justify-content: center;
             }
             
-            .content {
-                margin: -20px 20px 30px;
-                padding: 40px 30px;
+            h1 {
+                font-size: 24px;
             }
             
-            .back-link {
-                position: static;
-                display: inline-flex;
-                margin-bottom: 20px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .content {
-                padding: 30px 20px;
+            h2 {
+                font-size: 20px;
             }
             
-            .privacy-section h2 {
-                font-size: 1.5rem;
+            h3 {
+                font-size: 18px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <a href="index.html" class="back-link">
-            <i class="fas fa-arrow-left"></i>
-            <span>Back to Home</span>
-        </a>
-        <div class="container">
-            <h1>Privacy Policy</h1>
-            <p class="subtitle">Your privacy is our priority</p>
-        </div>
+    <!-- 语言切换按钮 -->
+    <div class="language-switcher">
+        <button class="lang-btn" onclick="switchLanguage('zh')" id="btn-zh">中文</button>
+        <button class="lang-btn" onclick="switchLanguage('en')" id="btn-en">English</button>
     </div>
-    
+
     <div class="container">
-        <div class="content">
-            <div class="privacy-section">
-                <h2>Overview</h2>
-                <p>This Privacy Policy is designed to help you understand how PatLock (hereinafter referred to as "we," "app") collects, uses, and protects the information you provide when using our application. We highly value your privacy and are committed to protecting the personal data of you and your children.</p>
+        <!-- 中文版本 -->
+        <div class="lang-content" id="content-zh">
+            <h1>隐私政策</h1>
+            <p class="last-updated">最后更新：2025年10月15日</p>
+            
+            <div class="highlight">
+                <p><strong>您的隐私对我们至关重要</strong></p>
+                <p>PlayTimer+ ("我们" 或 "应用") 致力于保护您的隐私。本隐私政策说明了我们收集、使用和保护您信息的方式。</p>
+            </div>
+
+            <h2>1. 我们收集哪些信息</h2>
+            
+            <h3>1.1 自动收集的匿名信息</h3>
+            <p>为了改进应用功能和用户体验，我们可能会收集以下<strong>完全匿名</strong>的信息：</p>
+            <ul>
+                <li>设备型号（如 iPhone 14 Pro）</li>
+                <li>操作系统版本（如 iOS 17.0）</li>
+                <li>应用版本号</li>
+                <li>功能使用统计（如创建了几个时间限制、使用了哪些功能）</li>
+                <li>应用崩溃和错误报告</li>
+            </ul>
+            
+            <h3>1.2 用户提供的配置信息</h3>
+            <p>当您使用应用功能时，我们可能收集：</p>
+            <ul>
+                <li>孩子年龄段（如 0-3岁、3-6岁，<strong>而非精确年龄</strong>）</li>
+                <li>功能配置（如时间限制的设置、时间段配置）</li>
+                <li>购买状态（是否为高级用户）</li>
+            </ul>
+            
+            <div class="negative">
+                <h3>1.3 我们不会收集</h3>
+                <p><span class="xmark">✗</span> 您的姓名、电话号码或邮箱地址</p>
+                <p><span class="xmark">✗</span> 孩子的姓名、照片或任何个人身份信息</p>
+                <p><span class="xmark">✗</span> 具体的地理位置坐标</p>
+                <p><span class="xmark">✗</span> 应用内的具体内容、消息或聊天记录</p>
+                <p><span class="xmark">✗</span> 设备唯一标识符（IDFA/UDID）用于追踪</p>
+            </div>
+
+            <h2>2. 如何使用这些信息</h2>
+            
+            <h3>2.1 我们使用收集的信息来：</h3>
+            <ul>
+                <li>改进应用功能和用户体验</li>
+                <li>分析哪些功能最受欢迎，优先优化</li>
+                <li>发现和修复程序错误</li>
+                <li>优化应用性能和稳定性</li>
+                <li>了解用户需求，开发新功能</li>
+            </ul>
+            
+            <div class="negative">
+                <h3>2.2 我们承诺<strong>永远不会</strong>：</h3>
+                <p><span class="xmark">✗</span> 出售您的数据给第三方</p>
+                <p><span class="xmark">✗</span> 用于广告投放或推送</p>
+                <p><span class="xmark">✗</span> 与其他公司共享（除非法律要求）</p>
+                <p><span class="xmark">✗</span> 用于跨应用或跨网站追踪</p>
+            </div>
+
+            <h2>3. 数据存储和安全</h2>
+            
+            <div class="positive">
+                <h3>3.1 数据存储位置</h3>
+                <p><span class="checkmark">✓</span> <strong>所有数据存储在您的私有iCloud空间</strong></p>
+                <p><span class="checkmark">✓</span> 使用Apple CloudKit服务（符合Apple安全标准）</p>
+                <p><span class="checkmark">✓</span> 只有您本人能访问这些数据</p>
+                <p><span class="checkmark">✓</span> 其他用户完全无法看到您的数据</p>
             </div>
             
-            <div class="privacy-section">
-                <h2>Information Collection</h2>
-                <p>PatLock is a local application focused on device usage time management, following the principle of minimizing data collection:</p>
+            <h3>3.2 数据安全措施</h3>
+            <p>我们采取以下措施保护您的数据：</p>
+            <ul>
+                <li>使用Apple iCloud的端到端加密存储</li>
+                <li>Private Database隔离（数据完全私密）</li>
+                <li>匿名用户标识（使用CloudKit系统ID，不涉及真实身份）</li>
+                <li>不收集敏感的个人身份信息</li>
+                <li>定期审计收集的数据类型</li>
+            </ul>
+
+            <h2>4. 您的隐私权利</h2>
+            
+            <div class="positive">
+                <p>您拥有以下权利，并且可以随时行使：</p>
                 
-                <h3>Automatically Collected Information</h3>
+                <h3>4.1 选择权</h3>
+                <p><span class="checkmark">✓</span> <strong>随时开启或关闭数据收集</strong></p>
+                <p>在应用"设置" → "隐私与数据"中，您可以随时关闭匿名统计功能。</p>
+                
+                <h3>4.2 知情权</h3>
+                <p><span class="checkmark">✓</span> <strong>查看已收集的数据</strong></p>
+                <p>您可以在应用中查看我们收集了哪些关于您的数据（功能开发中）。</p>
+                
+                <h3>4.3 删除权</h3>
+                <p><span class="checkmark">✓</span> <strong>删除所有已收集的数据</strong></p>
+                <p>您可以要求我们删除所有已收集的数据（功能开发中），或者直接从您的iCloud中删除。</p>
+                
+                <h3>4.4 撤回同意</h3>
+                <p><span class="checkmark">✓</span> <strong>随时撤回之前的同意</strong></p>
+                <p>您可以随时在设置中关闭数据收集，我们将立即停止收集。</p>
+            </div>
+
+            <h2>5. 儿童隐私保护</h2>
+            
+            <p>PlayTimer+ 是一款儿童管理应用，我们特别重视儿童隐私：</p>
+            
+            <div class="positive">
+                <h3>5.1 我们的承诺</h3>
+                <p><span class="checkmark">✓</span> <strong>不直接收集儿童的个人信息</strong></p>
+                <p><span class="checkmark">✓</span> 只收集年龄段（如0-3岁），不收集精确年龄</p>
+                <p><span class="checkmark">✓</span> 不收集儿童的姓名、照片或任何可识别身份的信息</p>
+                <p><span class="checkmark">✓</span> 所有功能需要家长设置和控制</p>
+            </div>
+            
+            <h3>5.2 符合儿童隐私法规</h3>
+            <p>我们的数据收集实践符合：</p>
+            <ul>
+                <li>美国《儿童在线隐私保护法》(COPPA)</li>
+                <li>欧盟《通用数据保护条例》(GDPR) 中关于儿童的特别规定</li>
+                <li>中国《儿童个人信息网络保护规定》</li>
+            </ul>
+
+            <h2>6. 数据共享和披露</h2>
+            
+            <h3>6.1 我们不会共享您的数据</h3>
+            <p>除以下情况外，我们不会与任何第三方共享您的数据：</p>
+            <ul>
+                <li><strong>法律要求</strong>：当法律、法规或法律程序要求时</li>
+                <li><strong>保护权利</strong>：为保护我们的合法权利、财产或安全时</li>
+                <li><strong>征得同意</strong>：在征得您明确同意的情况下</li>
+            </ul>
+            
+            <h3>6.2 第三方服务</h3>
+            <p>我们使用以下第三方服务，它们都有严格的隐私政策：</p>
+            <ul>
+                <li><strong>Apple iCloud/CloudKit</strong>：用于数据存储（隐私政策：<a href="https://www.apple.com/legal/privacy/" target="_blank">Apple隐私政策</a>）</li>
+            </ul>
+
+            <h2>7. 数据保留</h2>
+            
+            <p>我们会保留您的数据直到：</p>
+            <ul>
+                <li>您选择删除数据</li>
+                <li>您删除应用</li>
+                <li>数据超过保留期限（自动清理超过90天的旧数据）</li>
+            </ul>
+            
+            <p>删除数据后，我们会在30天内从所有系统中完全删除。</p>
+
+            <div class="contact">
+                <h2>8. 联系我们</h2>
+                
+                <p>如果您对本隐私政策或您的个人数据有任何问题、意见或请求，请通过以下方式联系我们：</p>
+                
+                <p><strong>邮箱</strong>：jiangfei19831023@126.com</p>
+                <p><strong>响应时间</strong>：我们会在收到您的请求后24-48小时内回复</p>
+                
+                <p>如果您要行使您的隐私权利（访问、删除、更正数据等），请在邮件中说明：</p>
                 <ul>
-                    <li><strong>Device Usage Statistics</strong>: To perform time management functions, we collect information related to app usage on the device through iOS Family Controls framework, including app usage time and patterns. This data is processed locally on your device.</li>
-                    <li><strong>Device Information</strong>: We may collect basic device information such as device model, operating system version, and unique device identifiers, solely for application functionality and optimization purposes.</li>
+                    <li>您的请求类型（访问/删除/更正/其他）</li>
+                    <li>相关的应用信息</li>
+                    <li>任何有助于我们处理请求的其他信息</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <h2>9. 总结</h2>
+                
+                <p><strong>PlayTimer+ 承诺</strong>：</p>
+                <ul>
+                    <li><span class="checkmark">✓</span> 数据存储在您的私有iCloud空间</li>
+                    <li><span class="checkmark">✓</span> 完全匿名，不涉及个人身份</li>
+                    <li><span class="checkmark">✓</span> 您可以随时查看和删除数据</li>
+                    <li><span class="checkmark">✓</span> 符合GDPR、CCPA和COPPA标准</li>
+                    <li><span class="checkmark">✓</span> 永远不会出售您的数据</li>
+                    <li><span class="checkmark">✓</span> 透明、可控、安全</li>
                 </ul>
                 
-                <h3>Information You Actively Provide</h3>
-                <ul>
-                    <li><strong>Time Slot Settings</strong>: Time slots you create, time limits, and rules related to specific applications.</li>
-                    <li><strong>Access Password</strong>: If you set a parental access password, it will be stored securely on the local device.</li>
-                    <li><strong>App Selection</strong>: Applications you choose to restrict or monitor through the Family Controls interface.</li>
-                    <li><strong>Usage Preferences</strong>: Your customized settings and preferences for the application interface and functionality.</li>
-                </ul>
+                <p><strong>您的隐私，我们的责任。</strong></p>
+            </div>
+
+            <hr style="margin: 40px 0; border: none; border-top: 1px solid #d2d2d7;">
+            
+            <p style="text-align: center; color: #86868b; font-size: 14px;">
+                本隐私政策最后更新于 2025年10月15日<br>
+                PlayTimer+ © 2025 版权所有
+            </p>
+        </div>
+
+        <!-- 英文版本 -->
+        <div class="lang-content" id="content-en">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last Updated: October 15, 2025</p>
+            
+            <div class="highlight">
+                <p><strong>Your Privacy is Our Priority</strong></p>
+                <p>PlayTimer+ ("we" or "the app") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information.</p>
+            </div>
+
+            <h2>1. Information We Collect</h2>
+            
+            <h3>1.1 Automatically Collected Anonymous Information</h3>
+            <p>To improve app functionality and user experience, we may collect the following <strong>completely anonymous</strong> information:</p>
+            <ul>
+                <li>Device model (e.g., iPhone 14 Pro)</li>
+                <li>Operating system version (e.g., iOS 17.0)</li>
+                <li>App version number</li>
+                <li>Feature usage statistics (e.g., how many time limits created, which features used)</li>
+                <li>App crash and error reports</li>
+            </ul>
+            
+            <h3>1.2 User-Provided Configuration Information</h3>
+            <p>When you use app features, we may collect:</p>
+            <ul>
+                <li>Child age group (e.g., 0-3 years, 3-6 years, <strong>not exact age</strong>)</li>
+                <li>Feature configurations (e.g., time limit settings, time slot configurations)</li>
+                <li>Purchase status (whether premium user)</li>
+            </ul>
+            
+            <div class="negative">
+                <h3>1.3 We Do NOT Collect</h3>
+                <p><span class="xmark">✗</span> Your name, phone number, or email address</p>
+                <p><span class="xmark">✗</span> Child's name, photos, or any personally identifiable information</p>
+                <p><span class="xmark">✗</span> Precise geographic location coordinates</p>
+                <p><span class="xmark">✗</span> Specific in-app content, messages, or chat logs</p>
+                <p><span class="xmark">✗</span> Device unique identifiers (IDFA/UDID) for tracking</p>
+            </div>
+
+            <h2>2. How We Use This Information</h2>
+            
+            <h3>2.1 We Use Collected Information To:</h3>
+            <ul>
+                <li>Improve app features and user experience</li>
+                <li>Analyze which features are most popular for prioritization</li>
+                <li>Discover and fix bugs</li>
+                <li>Optimize app performance and stability</li>
+                <li>Understand user needs and develop new features</li>
+            </ul>
+            
+            <div class="negative">
+                <h3>2.2 We <strong>NEVER</strong>:</h3>
+                <p><span class="xmark">✗</span> Sell your data to third parties</p>
+                <p><span class="xmark">✗</span> Use it for advertising or targeted marketing</p>
+                <p><span class="xmark">✗</span> Share it with other companies (unless required by law)</p>
+                <p><span class="xmark">✗</span> Use it for cross-app or cross-site tracking</p>
+            </div>
+
+            <h2>3. Data Storage and Security</h2>
+            
+            <div class="positive">
+                <h3>3.1 Data Storage Location</h3>
+                <p><span class="checkmark">✓</span> <strong>All data is stored in your private iCloud space</strong></p>
+                <p><span class="checkmark">✓</span> Uses Apple CloudKit service (compliant with Apple security standards)</p>
+                <p><span class="checkmark">✓</span> Only you can access this data</p>
+                <p><span class="checkmark">✓</span> Other users cannot see your data at all</p>
             </div>
             
-            <div class="privacy-section">
-                <h2>Information Usage</h2>
-                <p>All information we collect is used only for the following purposes:</p>
-                <ol>
-                    <li><strong>Core Functionality</strong>: Providing, maintaining, and improving our application functions, especially time management and parental control features.</li>
-                    <li><strong>Restriction Implementation</strong>: Implementing app usage restrictions and time slot rules you set through iOS Family Controls framework.</li>
-                    <li><strong>Local Notifications</strong>: Sending local notifications and reminders according to your settings.</li>
-                    <li><strong>Technical Support</strong>: Diagnosing and resolving technical issues that may arise.</li>
-                    <li><strong>Feature Enhancement</strong>: Understanding usage patterns to improve app functionality and user experience.</li>
-                </ol>
-            </div>
+            <h3>3.2 Security Measures</h3>
+            <p>We take the following measures to protect your data:</p>
+            <ul>
+                <li>End-to-end encrypted storage using Apple iCloud</li>
+                <li>Private Database isolation (completely private data)</li>
+                <li>Anonymous user identifiers (CloudKit system ID, not real identity)</li>
+                <li>No collection of sensitive personal information</li>
+                <li>Regular audits of collected data types</li>
+            </ul>
+
+            <h2>4. Your Privacy Rights</h2>
             
-            <div class="privacy-section">
-                <h2>Data Storage and Security</h2>
-                <div class="highlight-box">
-                    <p><strong>Important Note: All data is stored in your device's local storage and is not uploaded to the cloud or our servers.</strong> Your family's privacy is completely protected.</p>
-                </div>
-                <p>We implement appropriate technical and organizational measures to protect your data:</p>
-                <ul>
-                    <li><strong>Local Storage</strong>: All user data and settings are stored locally using iOS secure storage mechanisms.</li>
-                    <li><strong>Security Protection</strong>: Sensitive information such as passwords are protected using iOS secure storage mechanisms.</li>
-                    <li><strong>Access Control</strong>: The app uses iOS security features to prevent unauthorized access to stored data.</li>
-                    <li><strong>Data Isolation</strong>: App data is isolated from other applications through iOS sandboxing.</li>
-                </ul>
-            </div>
-            
-            <div class="privacy-section">
-                <h2>Data Sharing</h2>
-                <p>Since all data is stored on the local device, PatLock does not share your personal data with any third parties, except:</p>
-                <ul>
-                    <li><strong>Apple Services</strong>: Integration with Apple's Family Controls and App Store services for subscription management.</li>
-                    <li><strong>Legal Compliance</strong>: When required to comply with applicable laws, regulations, or legal processes.</li>
-                    <li><strong>Safety Protection</strong>: To protect our rights, safety, or property, or those of users when legally required.</li>
-                </ul>
-                <p><strong>We do not sell, rent, or trade your personal information to third parties for marketing purposes.</strong></p>
-            </div>
-            
-            <div class="privacy-section">
-                <h2>Children's Privacy</h2>
-                <p>PatLock is an application designed for parents with children. We understand the need for special care when handling data related to children:</p>
-                <ul>
-                    <li><strong>No Personal Data Collection</strong>: We do not knowingly collect personally identifiable information from children under 13.</li>
-                    <li><strong>Parental Control</strong>: App usage data is used only to provide parents with information about their children's device usage and to allow parents to set appropriate restrictions.</li>
-                    <li><strong>Local Processing</strong>: All data is stored locally on the device and is not used for targeted advertising or marketing purposes.</li>
-                    <li><strong>Family Controls Compliance</strong>: We use Apple's Family Controls framework in accordance with Apple's privacy guidelines for child safety.</li>
-                </ul>
-            </div>
-            
-            <div class="privacy-section">
-                <h2>Subscription and Purchase Information</h2>
-                <p>For users who purchase premium features:</p>
-                <ul>
-                    <li><strong>App Store Processing</strong>: All subscription and purchase transactions are processed through Apple's App Store, subject to Apple's privacy policy.</li>
-                    <li><strong>Subscription Management</strong>: Subscription status is managed locally on your device and through your Apple ID account.</li>
-                    <li><strong>No Payment Data Storage</strong>: We do not store or have access to your payment information, which is securely handled by Apple.</li>
-                    <li><strong>Purchase History</strong>: Purchase history is available through your Apple ID account settings.</li>
-                </ul>
-            </div>
-            
-            <div class="privacy-section">
-                <h2>Your Choices and Rights</h2>
-                <p>As a user, you have the following rights and choices:</p>
-                <ul>
-                    <li><strong>Data Deletion</strong>: Uninstall our application at any time in your device settings, which will delete all local data associated with the application.</li>
-                    <li><strong>Settings Reset</strong>: Delete all created time slots and restriction settings through the in-app reset function.</li>
-                    <li><strong>Password Management</strong>: Change or delete any access password you have set at any time.</li>
-                    <li><strong>Permission Control</strong>: Manage app permissions through iOS Settings, including Family Controls access.</li>
-                    <li><strong>Notification Control</strong>: Enable or disable notifications through iOS Settings or in-app preferences.</li>
-                </ul>
-            </div>
-            
-            <div class="privacy-section">
-                <h2>Privacy Policy Updates</h2>
-                <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make changes:</p>
-                <ul>
-                    <li>We will update the "Last updated" date at the bottom of this page</li>
-                    <li>For significant changes, we will provide notification within the application</li>
-                    <li>We encourage you to review this Privacy Policy periodically</li>
-                    <li>Your continued use of the app after changes constitutes acceptance of the updated policy</li>
-                </ul>
-            </div>
-            
-            <div class="privacy-section">
-                <h2>Contact Us</h2>
-                <p>If you have any questions, comments, or requests regarding this Privacy Policy or our privacy practices, please don't hesitate to contact us:</p>
+            <div class="positive">
+                <p>You have the following rights and can exercise them at any time:</p>
                 
-                <div class="contact-info">
-                    <h3>Get in Touch</h3>
-                    <p><strong>Developer:</strong> Fei Jiang</p>
-                    <a href="mailto:jiangfei2013@icloud.com">
-                        <i class="fas fa-envelope"></i>
-                        jiangfei2013@icloud.com
-                    </a>
-                    <p style="margin-top: 15px; color: var(--text-light); font-size: 0.95rem;">
-                        We typically respond to privacy inquiries within 48 hours.
-                    </p>
-                </div>
+                <h3>4.1 Right to Choose</h3>
+                <p><span class="checkmark">✓</span> <strong>Turn data collection on or off anytime</strong></p>
+                <p>In app "Settings" → "Privacy & Data", you can turn off anonymous statistics anytime.</p>
+                
+                <h3>4.2 Right to Know</h3>
+                <p><span class="checkmark">✓</span> <strong>View collected data</strong></p>
+                <p>You can view what data we've collected about you in the app (feature in development).</p>
+                
+                <h3>4.3 Right to Delete</h3>
+                <p><span class="checkmark">✓</span> <strong>Delete all collected data</strong></p>
+                <p>You can request deletion of all collected data (feature in development), or delete directly from your iCloud.</p>
+                
+                <h3>4.4 Right to Withdraw Consent</h3>
+                <p><span class="checkmark">✓</span> <strong>Withdraw previous consent anytime</strong></p>
+                <p>You can turn off data collection in settings anytime, and we'll immediately stop collecting.</p>
+            </div>
+
+            <h2>5. Children's Privacy</h2>
+            
+            <p>PlayTimer+ is a parental control app, and we take children's privacy very seriously:</p>
+            
+            <div class="positive">
+                <h3>5.1 Our Commitments</h3>
+                <p><span class="checkmark">✓</span> <strong>No direct collection of children's personal information</strong></p>
+                <p><span class="checkmark">✓</span> Only collect age groups (e.g., 0-3 years), not exact ages</p>
+                <p><span class="checkmark">✓</span> No collection of child's name, photos, or identifiable information</p>
+                <p><span class="checkmark">✓</span> All features require parental setup and control</p>
             </div>
             
-            <div class="last-updated">
-                <p><strong>Last updated:</strong> August 13, 2025</p>
-                <p style="margin-top: 10px; font-size: 0.9rem;">
-                    This policy is effective immediately and applies to all users of PatLock.
-                </p>
+            <h3>5.2 Compliance with Children's Privacy Laws</h3>
+            <p>Our data collection practices comply with:</p>
+            <ul>
+                <li>U.S. Children's Online Privacy Protection Act (COPPA)</li>
+                <li>EU General Data Protection Regulation (GDPR) provisions on children</li>
+                <li>China's Provisions on the Network Protection of Children's Personal Information</li>
+            </ul>
+
+            <h2>6. Data Sharing and Disclosure</h2>
+            
+            <h3>6.1 We Do Not Share Your Data</h3>
+            <p>Except in the following cases, we do not share your data with any third party:</p>
+            <ul>
+                <li><strong>Legal Requirements</strong>: When required by law, regulation, or legal process</li>
+                <li><strong>Rights Protection</strong>: To protect our legitimate rights, property, or safety</li>
+                <li><strong>With Consent</strong>: With your explicit consent</li>
+            </ul>
+            
+            <h3>6.2 Third-Party Services</h3>
+            <p>We use the following third-party services, all with strict privacy policies:</p>
+            <ul>
+                <li><strong>Apple iCloud/CloudKit</strong>: For data storage (Privacy Policy: <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>)</li>
+            </ul>
+
+            <h2>7. Data Retention</h2>
+            
+            <p>We retain your data until:</p>
+            <ul>
+                <li>You choose to delete the data</li>
+                <li>You delete the app</li>
+                <li>Data exceeds retention period (automatic cleanup of data older than 90 days)</li>
+            </ul>
+            
+            <p>After deletion, we will completely remove data from all systems within 30 days.</p>
+
+            <div class="contact">
+                <h2>8. Contact Us</h2>
+                
+                <p>If you have any questions, comments, or requests regarding this Privacy Policy or your personal data, please contact us:</p>
+                
+                <p><strong>Email</strong>: jiangfei19831023@126.com</p>
+                <p><strong>Response Time</strong>: We will respond within 24-48 hours of receiving your request</p>
+                
+                <p>If you wish to exercise your privacy rights (access, delete, correct data, etc.), please include in your email:</p>
+                <ul>
+                    <li>Your request type (access/delete/correct/other)</li>
+                    <li>Relevant app information</li>
+                    <li>Any information that helps us process your request</li>
+                </ul>
             </div>
+
+            <div class="highlight">
+                <h2>9. Summary</h2>
+                
+                <p><strong>PlayTimer+ Commitments</strong>:</p>
+                <ul>
+                    <li><span class="checkmark">✓</span> Data stored in your private iCloud space</li>
+                    <li><span class="checkmark">✓</span> Completely anonymous, no personal identity</li>
+                    <li><span class="checkmark">✓</span> You can view and delete data anytime</li>
+                    <li><span class="checkmark">✓</span> Compliant with GDPR, CCPA, and COPPA</li>
+                    <li><span class="checkmark">✓</span> Never sell your data</li>
+                    <li><span class="checkmark">✓</span> Transparent, controllable, secure</li>
+                </ul>
+                
+                <p><strong>Your Privacy, Our Responsibility.</strong></p>
+            </div>
+
+            <hr style="margin: 40px 0; border: none; border-top: 1px solid #d2d2d7;">
+            
+            <p style="text-align: center; color: #86868b; font-size: 14px;">
+                This Privacy Policy was last updated on October 15, 2025<br>
+                PlayTimer+ © 2025 All Rights Reserved
+            </p>
         </div>
     </div>
+
+    <script>
+        // 语言切换功能
+        function switchLanguage(lang) {
+            // 隐藏所有内容
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 移除所有按钮的active状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 显示选中的语言内容
+            document.getElementById('content-' + lang).classList.add('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            // 更新HTML lang属性
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            
+            // 保存用户选择到localStorage
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // 页面加载时的初始化
+        function initLanguage() {
+            // 检查localStorage中的用户偏好
+            let preferredLang = localStorage.getItem('preferredLanguage');
+            
+            // 如果没有保存的偏好，检测浏览器语言
+            if (!preferredLang) {
+                const browserLang = navigator.language || navigator.userLanguage;
+                preferredLang = browserLang.startsWith('zh') ? 'zh' : 'en';
+            }
+            
+            // 应用语言设置
+            switchLanguage(preferredLang);
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
 </body>
 </html>
