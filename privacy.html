@@ -101,49 +101,75 @@
         }
         
         li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+        }
+        
+        strong {
             color: #1d1d1f;
         }
         
         .highlight {
-            background-color: #e8f4f8;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 4px solid #007AFF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .highlight p {
+            color: white;
+            margin-bottom: 10px;
         }
         
         .positive {
-            background-color: #e8f5e9;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #4CAF50;
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .positive p, .positive h3 {
+            margin-bottom: 12px;
         }
         
         .negative {
-            background-color: #ffebee;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #f44336;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .negative p {
+            margin-bottom: 12px;
+        }
+        
+        .contact {
+            background: #f5f5f7;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .contact a {
+            color: #007AFF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact a:hover {
+            text-decoration: underline;
         }
         
         .checkmark {
-            color: #4CAF50;
+            color: #34c759;
+            font-size: 18px;
             font-weight: bold;
         }
         
         .xmark {
-            color: #f44336;
+            color: #ff3b30;
+            font-size: 18px;
             font-weight: bold;
-        }
-        
-        .contact {
-            background-color: #f5f5f7;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 40px;
         }
         
         a {
@@ -162,40 +188,17 @@
         .lang-content.active {
             display: block;
         }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .language-switcher {
-                justify-content: center;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-            
-            h2 {
-                font-size: 20px;
-            }
-            
-            h3 {
-                font-size: 18px;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- 语言切换按钮 -->
     <div class="language-switcher">
-        <button class="lang-btn" onclick="switchLanguage('zh')" id="btn-zh">中文</button>
-        <button class="lang-btn" onclick="switchLanguage('en')" id="btn-en">English</button>
+        <button class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+        <button class="lang-btn" onclick="switchLanguage('en')">English</button>
     </div>
 
     <div class="container">
         <!-- 中文版本 -->
-        <div class="lang-content" id="content-zh">
+        <div class="lang-content active" id="content-zh">
             <h1>隐私政策</h1>
             <p class="last-updated">最后更新：2025年10月16日（🔒 隐私优化版）</p>
             
@@ -206,8 +209,8 @@
 
             <h2>1. 我们收集哪些信息</h2>
             
-            <h3>1.1 帮助我们改进应用（🔒 完全匿名）</h3>
-            <p>当您选择<strong>帮助改进应用</strong>时，我们仅收集以下<strong>完全匿名且模糊化</strong>的信息：</p>
+            <h3>1.1 帮助我们改进应用（🔒 完全可选）</h3>
+            <p>当您在"设置" → "改善用户体验"中选择<strong>"帮助改进应用"</strong>时，我们会收集以下<strong>完全匿名且模糊化</strong>的信息：</p>
             <ul>
                 <li>设备型号（如 iPhone 14 Pro）</li>
                 <li>操作系统版本（如 iOS 17.0）</li>
@@ -218,16 +221,18 @@
                 <li>时长<strong>范围</strong>（如 0-2小时、2-4小时，而非精确分钟数）</li>
                 <li>半径<strong>范围</strong>（如 0-100米、100-500米，而非精确数值）</li>
                 <li>应用使用<strong>日期</strong>（仅年月日，不含具体时刻）</li>
-                <li>应用崩溃和错误报告</li>
+                <li>应用崩溃和错误报告（仅技术信息，不含个人数据）</li>
             </ul>
             
-            <h3>1.2 用户提供的配置信息</h3>
-            <p>当您使用应用功能时，我们可能收集：</p>
+            <h3>1.2 应用功能必需的信息</h3>
+            <p>为了提供应用的核心功能，我们会在<strong>您的设备本地</strong>存储：</p>
             <ul>
-                <li>购买状态（是否为高级用户）</li>
-                <li>功能开启状态（布尔值：是/否）</li>
-                <li>邀请数量范围（如 0-10次，而非精确数字）</li>
+                <li>您设置的时间段配置（存储在本地）</li>
+                <li>您设置的时长限制（存储在本地）</li>
+                <li>您设置的位置限制（存储在本地）</li>
+                <li>应用的密码设置（存储在本地，使用iOS安全存储）</li>
             </ul>
+            <p><strong>重要说明：</strong>这些配置信息<strong>仅存储在您的设备上</strong>，不会上传到任何服务器。</p>
             
             <div class="negative">
                 <h3>1.3 我们绝不收集（🔒 隐私保护承诺）</h3>
@@ -244,7 +249,7 @@
 
             <h2>2. 如何使用这些信息</h2>
             
-            <h3>2.1 我们使用收集的信息来：</h3>
+            <h3>2.1 我们使用收集的匿名信息来：</h3>
             <ul>
                 <li>改进应用功能和用户体验</li>
                 <li>分析哪些功能最受欢迎，优先优化</li>
@@ -259,15 +264,17 @@
                 <p><span class="xmark">✗</span> 用于广告投放或推送</p>
                 <p><span class="xmark">✗</span> 与其他公司共享（除非法律要求）</p>
                 <p><span class="xmark">✗</span> 用于跨应用或跨网站追踪</p>
+                <p><span class="xmark">✗</span> 将数据与您的真实身份关联</p>
             </div>
 
             <h2>3. 数据存储和安全</h2>
             
             <div class="positive">
                 <h3>3.1 数据存储位置</h3>
-                <p><span class="checkmark">✓</span> <strong>所有数据存储在您的私有iCloud空间</strong></p>
+                <p><span class="checkmark">✓</span> <strong>应用配置存储在您的设备本地</strong></p>
+                <p><span class="checkmark">✓</span> <strong>匿名统计数据存储在您的私有iCloud空间</strong></p>
                 <p><span class="checkmark">✓</span> 使用Apple CloudKit服务（符合Apple安全标准）</p>
-                <p><span class="checkmark">✓</span> 只有您本人能访问这些数据</p>
+                <p><span class="checkmark">✓</span> 只有您本人能访问您的iCloud数据</p>
                 <p><span class="checkmark">✓</span> 其他用户完全无法看到您的数据</p>
             </div>
             
@@ -277,30 +284,51 @@
                 <li>使用Apple iCloud的端到端加密存储</li>
                 <li>Private Database隔离（数据完全私密）</li>
                 <li>匿名用户标识（使用CloudKit系统ID，不涉及真实身份）</li>
+                <li>完全匿名化和模糊化处理</li>
                 <li>不收集敏感的个人身份信息</li>
                 <li>定期审计收集的数据类型</li>
             </ul>
 
-            <h2>4. 您的隐私权利</h2>
+            <h2>4. 您的隐私权利和控制</h2>
             
             <div class="positive">
-                <p>您拥有以下权利，并且可以随时行使：</p>
+                <p>您拥有完全的控制权：</p>
                 
-                <h3>4.1 您的选择</h3>
-                <p><span class="checkmark">✓</span> <strong>完全由您决定</strong></p>
-                <p>在应用"设置" → "改善用户体验"中，您可以随时开启或关闭"帮助改进应用"功能。</p>
+                <h3>4.1 选择权 - 完全由您决定</h3>
+                <p><span class="checkmark">✓</span> <strong>在应用"设置" → "改善用户体验"中：</strong></p>
+                <ul>
+                    <li>开启"帮助改进应用" = 允许收集匿名使用数据</li>
+                    <li>关闭"帮助改进应用" = 完全不收集任何数据</li>
+                    <li>您可以随时更改此设置</li>
+                </ul>
+                <p><strong>默认状态：</strong>首次使用时会询问您的选择，您可以选择同意或拒绝。</p>
                 
-                <h3>4.2 透明承诺</h3>
-                <p><span class="checkmark">✓</span> <strong>我们收集的都是匿名信息</strong></p>
-                <p>所有数据都已完全匿名化处理，无法关联到您个人。</p>
+                <h3>4.2 透明承诺 - 数据完全匿名</h3>
+                <p><span class="checkmark">✓</span> <strong>所有收集的数据都已完全匿名化</strong></p>
+                <ul>
+                    <li>无法识别您的真实身份</li>
+                    <li>无法关联到您个人</li>
+                    <li>只是统计数字和范围</li>
+                    <li>不包含任何个人隐私信息</li>
+                </ul>
                 
-                <h3>4.3 数据管理</h3>
-                <p><span class="checkmark">✓</span> <strong>您的数据存储在您的iCloud中</strong></p>
-                <p>所有数据都存储在您的私有iCloud空间，您可以随时从iCloud设置中管理或删除。</p>
+                <h3>4.3 数据管理 - 存储在您的iCloud</h3>
+                <p><span class="checkmark">✓</span> <strong>完全掌控您的数据</strong></p>
+                <ul>
+                    <li>匿名数据存储在您的私有iCloud空间</li>
+                    <li>您可以通过iCloud设置管理存储空间</li>
+                    <li>删除应用会自动清理相关数据</li>
+                    <li>关闭"帮助改进应用"会立即停止收集</li>
+                </ul>
                 
-                <h3>4.4 撤回同意</h3>
-                <p><span class="checkmark">✓</span> <strong>随时撤回之前的同意</strong></p>
-                <p>您可以随时在设置中关闭数据收集，我们将立即停止收集。</p>
+                <h3>4.4 撤回同意 - 随时可以改变主意</h3>
+                <p><span class="checkmark">✓</span> <strong>您可以随时撤回之前的同意</strong></p>
+                <ul>
+                    <li>在设置中关闭"帮助改进应用"即可</li>
+                    <li>关闭后立即停止收集新数据</li>
+                    <li>已收集的匿名数据会在90天后自动清理</li>
+                    <li>不会影响应用的正常使用</li>
+                </ul>
             </div>
 
             <h2>5. 儿童隐私保护</h2>
@@ -309,10 +337,10 @@
             
             <div class="positive">
                 <h3>5.1 我们的承诺</h3>
-                <p><span class="checkmark">✓</span> <strong>不直接收集儿童的个人信息</strong></p>
-                <p><span class="checkmark">✓</span> 只收集年龄段（如0-3岁），不收集精确年龄</p>
-                <p><span class="checkmark">✓</span> 不收集儿童的姓名、照片或任何可识别身份的信息</p>
-                <p><span class="checkmark">✓</span> 所有功能需要家长设置和控制</p>
+                <p><span class="checkmark">✓</span> <strong>不直接收集儿童的任何信息</strong></p>
+                <p><span class="checkmark">✓</span> 应用由家长设置和控制</p>
+                <p><span class="checkmark">✓</span> 即使收集使用数据，也完全匿名且无法识别儿童身份</p>
+                <p><span class="checkmark">✓</span> 不收集儿童的姓名、照片或任何可识别信息</p>
             </div>
             
             <h3>5.2 符合儿童隐私法规</h3>
@@ -326,68 +354,68 @@
             <h2>6. 数据共享和披露</h2>
             
             <h3>6.1 我们不会共享您的数据</h3>
-            <p>除以下情况外，我们不会与任何第三方共享您的数据：</p>
+            <p>除以下极少数情况外，我们不会与任何第三方共享您的数据：</p>
             <ul>
-                <li><strong>法律要求</strong>：当法律、法规或法律程序要求时</li>
-                <li><strong>保护权利</strong>：为保护我们的合法权利、财产或安全时</li>
-                <li><strong>征得同意</strong>：在征得您明确同意的情况下</li>
+                <li><strong>法律要求</strong>：当法律、法规或法律程序明确要求时</li>
+                <li><strong>保护权利</strong>：为保护我们或用户的合法权利、财产或安全时</li>
             </ul>
+            <p><strong>重要说明：</strong>由于我们收集的数据已完全匿名化，即使在上述情况下也无法关联到具体个人。</p>
             
             <h3>6.2 第三方服务</h3>
-            <p>我们使用以下第三方服务，它们都有严格的隐私政策：</p>
+            <p>我们使用以下Apple原生服务：</p>
             <ul>
-                <li><strong>Apple iCloud/CloudKit</strong>：用于数据存储（隐私政策：<a href="https://www.apple.com/legal/privacy/" target="_blank">Apple隐私政策</a>）</li>
+                <li><strong>Apple iCloud/CloudKit</strong>：用于存储匿名统计数据</li>
+                <li><strong>Apple Screen Time API</strong>：用于实现应用限制功能（完全在设备本地运行）</li>
             </ul>
+            <p>这些都是Apple的原生服务，受Apple隐私政策保护：<a href="https://www.apple.com/legal/privacy/" target="_blank">Apple隐私政策</a></p>
 
             <h2>7. 数据保留</h2>
             
-            <p>我们会保留您的数据直到：</p>
+            <p>我们会保留您的匿名统计数据直到：</p>
             <ul>
-                <li>您选择删除数据</li>
+                <li>您在设置中关闭"帮助改进应用"</li>
                 <li>您删除应用</li>
-                <li>数据超过保留期限（自动清理超过90天的旧数据）</li>
+                <li>数据超过保留期限（<strong>自动清理超过90天的旧数据</strong>）</li>
+                <li>您从iCloud设置中清除应用数据</li>
             </ul>
             
-            <p>删除数据后，我们会在30天内从所有系统中完全删除。</p>
+            <p><strong>自动清理机制：</strong>超过90天的匿名统计数据会自动从系统中删除。</p>
+
+            <h2>8. 国际数据传输</h2>
+            
+            <p>您的数据存储在Apple iCloud中，可能会在不同国家/地区的Apple数据中心之间传输。</p>
+            <ul>
+                <li>所有传输都遵循Apple的安全标准</li>
+                <li>数据已完全匿名化，无法识别个人身份</li>
+                <li>符合各国数据保护法规要求</li>
+            </ul>
+
+            <h2>9. 隐私政策的更新</h2>
+            
+            <p>我们可能会不定期更新本隐私政策。更新时我们会：</p>
+            <ul>
+                <li>在应用中通知您</li>
+                <li>更新本页面顶部的"最后更新"日期</li>
+                <li>如果是重大变更，会请您重新确认同意</li>
+            </ul>
+            
+            <p>继续使用应用即表示您接受更新后的隐私政策。</p>
 
             <div class="contact">
-                <h2>8. 联系我们</h2>
+                <h2>10. 联系我们</h2>
                 
-                <p>如果您对本隐私政策或您的个人数据有任何问题、意见或请求，请通过以下方式联系我们：</p>
+                <p>如果您对本隐私政策有任何疑问、意见或请求，请通过以下方式联系我们：</p>
                 
-                <p><strong>邮箱</strong>：jiangfei19831023@126.com</p>
-                <p><strong>响应时间</strong>：我们会在收到您的请求后24-48小时内回复</p>
+                <p><strong>开发者：</strong>Alex Jiang</p>
+                <p><strong>联系邮箱：</strong><a href="mailto:outlook2007@outlook.com">outlook2007@outlook.com</a></p>
                 
-                <p>如果您要行使您的隐私权利（访问、删除、更正数据等），请在邮件中说明：</p>
-                <ul>
-                    <li>您的请求类型（访问/删除/更正/其他）</li>
-                    <li>相关的应用信息</li>
-                    <li>任何有助于我们处理请求的其他信息</li>
-                </ul>
+                <p>我们会在收到您的请求后尽快回复（通常在30天内）。</p>
             </div>
 
             <div class="highlight">
-                <h2>9. 总结</h2>
-                
-                <p><strong>家长锁承诺</strong>：</p>
-                <ul>
-                    <li><span class="checkmark">✓</span> 数据存储在您的私有iCloud空间</li>
-                    <li><span class="checkmark">✓</span> 完全匿名，不涉及个人身份</li>
-                    <li><span class="checkmark">✓</span> 您可以随时查看和删除数据</li>
-                    <li><span class="checkmark">✓</span> 符合GDPR、CCPA和COPPA标准</li>
-                    <li><span class="checkmark">✓</span> 永远不会出售您的数据</li>
-                    <li><span class="checkmark">✓</span> 透明、可控、安全</li>
-                </ul>
-                
-                <p><strong>您的隐私，我们的责任。</strong></p>
+                <p><strong>🔒 我们的承诺</strong></p>
+                <p>我们承诺始终将您的隐私放在首位。所有数据收集都是可选的、匿名的、透明的。您始终拥有完全的控制权。</p>
             </div>
-
-            <hr style="margin: 40px 0; border: none; border-top: 1px solid #d2d2d7;">
-            
-            <p style="text-align: center; color: #86868b; font-size: 14px;">
-                本隐私政策最后更新于 2025年10月16日（🔒 隐私优化版）<br>
-                家长锁 © 2025 版权所有
-            </p>
         </div>
 
         <!-- 英文版本 -->
@@ -402,8 +430,8 @@
 
             <h2>1. Information We Collect</h2>
             
-            <h3>1.1 Help Us Improve (🔒 Completely Anonymous)</h3>
-            <p>When you choose to <strong>help improve the app</strong>, we only collect the following <strong>completely anonymous and fuzzy</strong> information:</p>
+            <h3>1.1 Help Us Improve (🔒 Completely Optional)</h3>
+            <p>When you choose <strong>"Help Improve the App"</strong> in "Settings" → "Improve Experience", we collect the following <strong>completely anonymous and fuzzy</strong> information:</p>
             <ul>
                 <li>Device model (e.g., iPhone 14 Pro)</li>
                 <li>Operating system version (e.g., iOS 17.0)</li>
@@ -414,181 +442,205 @@
                 <li>Duration <strong>ranges</strong> (e.g., 0-2 hours, 2-4 hours, not exact minutes)</li>
                 <li>Radius <strong>ranges</strong> (e.g., 0-100m, 100-500m, not exact values)</li>
                 <li>App usage <strong>dates</strong> (year-month-day only, no specific time)</li>
-                <li>App crash and error reports</li>
+                <li>App crash and error reports (technical information only, no personal data)</li>
             </ul>
             
-            <h3>1.2 User-Provided Configuration Information</h3>
-            <p>When you use app features, we may collect:</p>
+            <h3>1.2 Information Required for App Features</h3>
+            <p>To provide core app functionality, we store <strong>locally on your device</strong>:</p>
             <ul>
-                <li>Purchase status (whether premium user)</li>
-                <li>Feature enabled status (boolean: yes/no)</li>
-                <li>Invitation count ranges (e.g., 0-10 times, not exact numbers)</li>
+                <li>Your time slot configurations (stored locally)</li>
+                <li>Your duration limit settings (stored locally)</li>
+                <li>Your location restriction settings (stored locally)</li>
+                <li>App password settings (stored locally using iOS secure storage)</li>
             </ul>
+            <p><strong>Important:</strong> This configuration information is <strong>only stored on your device</strong> and never uploaded to any server.</p>
             
             <div class="negative">
                 <h3>1.3 We Absolutely Do NOT Collect (🔒 Privacy Protection Commitment)</h3>
                 <p><span class="xmark">✗</span> Your name, phone number, or email address</p>
-                <p><span class="xmark">✗</span> Child's name, photos, or any personally identifiable information</p>
-                <p><span class="xmark">✗</span> <strong>Any exact geographic coordinates or location names</strong> (home, school, etc.)</p>
-                <p><span class="xmark">✗</span> <strong>User-defined configuration names</strong> (like "Sleep Time", "Study Time")</p>
-                <p><span class="xmark">✗</span> <strong>Exact times and timestamps</strong> (only dates are saved)</p>
-                <p><span class="xmark">✗</span> <strong>Exact numerical values</strong> (duration, counts, etc., only ranges are saved)</p>
-                <p><span class="xmark">✗</span> Specific in-app content, messages, or chat logs</p>
+                <p><span class="xmark">✗</span> Children's names, photos, or any personally identifiable information</p>
+                <p><span class="xmark">✗</span> <strong>Any precise geographic coordinates or location names</strong> (home, school, etc.)</p>
+                <p><span class="xmark">✗</span> <strong>User-defined configuration names</strong> (e.g., "Bedtime", "Study Time")</p>
+                <p><span class="xmark">✗</span> <strong>Precise times and timestamps</strong> (only dates)</p>
+                <p><span class="xmark">✗</span> <strong>Precise values</strong> (duration, counts, etc., only ranges)</p>
+                <p><span class="xmark">✗</span> App-specific content, messages, or chat records</p>
                 <p><span class="xmark">✗</span> Device unique identifiers (IDFA/UDID) for tracking</p>
                 <p><span class="xmark">✗</span> <strong>Detailed configuration JSON</strong> (no complete configuration details)</p>
             </div>
 
             <h2>2. How We Use This Information</h2>
             
-            <h3>2.1 We Use Collected Information To:</h3>
+            <h3>2.1 We use collected anonymous information to:</h3>
             <ul>
                 <li>Improve app features and user experience</li>
-                <li>Analyze which features are most popular for prioritization</li>
+                <li>Analyze which features are most popular for prioritized optimization</li>
                 <li>Discover and fix bugs</li>
                 <li>Optimize app performance and stability</li>
                 <li>Understand user needs and develop new features</li>
             </ul>
             
             <div class="negative">
-                <h3>2.2 We <strong>NEVER</strong>:</h3>
+                <h3>2.2 We promise to <strong>NEVER</strong>:</h3>
                 <p><span class="xmark">✗</span> Sell your data to third parties</p>
-                <p><span class="xmark">✗</span> Use it for advertising or targeted marketing</p>
-                <p><span class="xmark">✗</span> Share it with other companies (unless required by law)</p>
-                <p><span class="xmark">✗</span> Use it for cross-app or cross-site tracking</p>
+                <p><span class="xmark">✗</span> Use it for advertising or marketing</p>
+                <p><span class="xmark">✗</span> Share with other companies (unless legally required)</p>
+                <p><span class="xmark">✗</span> Use for cross-app or cross-website tracking</p>
+                <p><span class="xmark">✗</span> Link data to your real identity</p>
             </div>
 
             <h2>3. Data Storage and Security</h2>
             
             <div class="positive">
                 <h3>3.1 Data Storage Location</h3>
-                <p><span class="checkmark">✓</span> <strong>All data is stored in your private iCloud space</strong></p>
-                <p><span class="checkmark">✓</span> Uses Apple CloudKit service (compliant with Apple security standards)</p>
-                <p><span class="checkmark">✓</span> Only you can access this data</p>
-                <p><span class="checkmark">✓</span> Other users cannot see your data at all</p>
+                <p><span class="checkmark">✓</span> <strong>App configurations stored locally on your device</strong></p>
+                <p><span class="checkmark">✓</span> <strong>Anonymous statistics stored in your private iCloud space</strong></p>
+                <p><span class="checkmark">✓</span> Uses Apple CloudKit service (complies with Apple security standards)</p>
+                <p><span class="checkmark">✓</span> Only you can access your iCloud data</p>
+                <p><span class="checkmark">✓</span> Other users cannot see your data</p>
             </div>
             
             <h3>3.2 Security Measures</h3>
             <p>We take the following measures to protect your data:</p>
             <ul>
-                <li>End-to-end encrypted storage using Apple iCloud</li>
-                <li>Private Database isolation (completely private data)</li>
-                <li>Anonymous user identifiers (CloudKit system ID, not real identity)</li>
+                <li>Apple iCloud end-to-end encryption storage</li>
+                <li>Private Database isolation (data is completely private)</li>
+                <li>Anonymous user identification (uses CloudKit system ID, no real identity)</li>
+                <li>Complete anonymization and fuzzification</li>
                 <li>No collection of sensitive personal information</li>
                 <li>Regular audits of collected data types</li>
             </ul>
 
-            <h2>4. Your Privacy Rights</h2>
+            <h2>4. Your Privacy Rights and Control</h2>
             
             <div class="positive">
-                <p>You have the following rights and can exercise them at any time:</p>
+                <p>You have complete control:</p>
                 
-                <h3>4.1 Your Choice</h3>
-                <p><span class="checkmark">✓</span> <strong>Completely up to you</strong></p>
-                <p>In app "Settings" → "Improve Experience", you can turn on or off "Help Improve the App" anytime.</p>
+                <h3>4.1 Choice - Completely Up to You</h3>
+                <p><span class="checkmark">✓</span> <strong>In app "Settings" → "Improve Experience":</strong></p>
+                <ul>
+                    <li>Turn ON "Help Improve the App" = Allow anonymous usage data collection</li>
+                    <li>Turn OFF "Help Improve the App" = No data collection at all</li>
+                    <li>You can change this setting anytime</li>
+                </ul>
+                <p><strong>Default:</strong> On first use, you'll be asked for your choice. You can agree or decline.</p>
                 
-                <h3>4.2 Transparency Promise</h3>
-                <p><span class="checkmark">✓</span> <strong>All collected information is anonymous</strong></p>
-                <p>All data is completely anonymized and cannot be linked to you personally.</p>
+                <h3>4.2 Transparency Promise - Data is Completely Anonymous</h3>
+                <p><span class="checkmark">✓</span> <strong>All collected data is completely anonymized</strong></p>
+                <ul>
+                    <li>Cannot identify your real identity</li>
+                    <li>Cannot be linked to you personally</li>
+                    <li>Just statistics and ranges</li>
+                    <li>Contains no personal privacy information</li>
+                </ul>
                 
-                <h3>4.3 Data Management</h3>
-                <p><span class="checkmark">✓</span> <strong>Your data is stored in your iCloud</strong></p>
-                <p>All data is stored in your private iCloud space, and you can manage or delete it anytime from iCloud settings.</p>
+                <h3>4.3 Data Management - Stored in Your iCloud</h3>
+                <p><span class="checkmark">✓</span> <strong>Full control of your data</strong></p>
+                <ul>
+                    <li>Anonymous data stored in your private iCloud space</li>
+                    <li>You can manage storage through iCloud settings</li>
+                    <li>Deleting the app automatically clears related data</li>
+                    <li>Turning off "Help Improve the App" stops collection immediately</li>
+                </ul>
                 
-                <h3>4.4 Withdraw Consent</h3>
-                <p><span class="checkmark">✓</span> <strong>Withdraw previous consent anytime</strong></p>
-                <p>You can turn off the feature in settings anytime, and we'll immediately stop collecting.</p>
+                <h3>4.4 Withdraw Consent - Change Your Mind Anytime</h3>
+                <p><span class="checkmark">✓</span> <strong>You can withdraw previous consent anytime</strong></p>
+                <ul>
+                    <li>Turn off "Help Improve the App" in settings</li>
+                    <li>Stops collecting new data immediately after turning off</li>
+                    <li>Collected anonymous data automatically cleared after 90 days</li>
+                    <li>Does not affect normal app usage</li>
+                </ul>
             </div>
 
-            <h2>5. Children's Privacy</h2>
+            <h2>5. Children's Privacy Protection</h2>
             
             <p>PatLock is a parental control app, and we take children's privacy very seriously:</p>
             
             <div class="positive">
-                <h3>5.1 Our Commitments</h3>
-                <p><span class="checkmark">✓</span> <strong>No direct collection of children's personal information</strong></p>
-                <p><span class="checkmark">✓</span> Only collect age groups (e.g., 0-3 years), not exact ages</p>
-                <p><span class="checkmark">✓</span> No collection of child's name, photos, or identifiable information</p>
-                <p><span class="checkmark">✓</span> All features require parental setup and control</p>
+                <h3>5.1 Our Commitment</h3>
+                <p><span class="checkmark">✓</span> <strong>Does not directly collect any information about children</strong></p>
+                <p><span class="checkmark">✓</span> App is set up and controlled by parents</p>
+                <p><span class="checkmark">✓</span> Even usage data is completely anonymous and cannot identify children</p>
+                <p><span class="checkmark">✓</span> Does not collect children's names, photos, or any identifiable information</p>
             </div>
             
             <h3>5.2 Compliance with Children's Privacy Laws</h3>
             <p>Our data collection practices comply with:</p>
             <ul>
                 <li>U.S. Children's Online Privacy Protection Act (COPPA)</li>
-                <li>EU General Data Protection Regulation (GDPR) provisions on children</li>
+                <li>EU General Data Protection Regulation (GDPR) special provisions for children</li>
                 <li>China's Provisions on the Network Protection of Children's Personal Information</li>
             </ul>
 
             <h2>6. Data Sharing and Disclosure</h2>
             
             <h3>6.1 We Do Not Share Your Data</h3>
-            <p>Except in the following cases, we do not share your data with any third party:</p>
+            <p>Except for the following rare cases, we do not share your data with any third parties:</p>
             <ul>
-                <li><strong>Legal Requirements</strong>: When required by law, regulation, or legal process</li>
-                <li><strong>Rights Protection</strong>: To protect our legitimate rights, property, or safety</li>
-                <li><strong>With Consent</strong>: With your explicit consent</li>
+                <li><strong>Legal Requirements</strong>: When explicitly required by law, regulation, or legal process</li>
+                <li><strong>Protect Rights</strong>: To protect our or users' legitimate rights, property, or safety</li>
             </ul>
+            <p><strong>Important:</strong> Since data we collect is completely anonymized, it cannot be linked to specific individuals even in above cases.</p>
             
             <h3>6.2 Third-Party Services</h3>
-            <p>We use the following third-party services, all with strict privacy policies:</p>
+            <p>We use the following Apple native services:</p>
             <ul>
-                <li><strong>Apple iCloud/CloudKit</strong>: For data storage (Privacy Policy: <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>)</li>
+                <li><strong>Apple iCloud/CloudKit</strong>: For storing anonymous statistics</li>
+                <li><strong>Apple Screen Time API</strong>: For implementing app restriction features (runs completely locally on device)</li>
             </ul>
+            <p>These are Apple's native services, protected by Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a></p>
 
             <h2>7. Data Retention</h2>
             
-            <p>We retain your data until:</p>
+            <p>We retain your anonymous statistics until:</p>
             <ul>
-                <li>You choose to delete the data</li>
+                <li>You turn off "Help Improve the App" in settings</li>
                 <li>You delete the app</li>
-                <li>Data exceeds retention period (automatic cleanup of data older than 90 days)</li>
+                <li>Data exceeds retention period (<strong>automatically clear data older than 90 days</strong>)</li>
+                <li>You clear app data from iCloud settings</li>
             </ul>
             
-            <p>After deletion, we will completely remove data from all systems within 30 days.</p>
+            <p><strong>Auto-cleanup:</strong> Anonymous statistics older than 90 days are automatically deleted from the system.</p>
+
+            <h2>8. International Data Transfer</h2>
+            
+            <p>Your data is stored in Apple iCloud and may be transferred between Apple data centers in different countries/regions.</p>
+            <ul>
+                <li>All transfers follow Apple's security standards</li>
+                <li>Data is completely anonymized and cannot identify individuals</li>
+                <li>Complies with data protection regulations in all countries</li>
+            </ul>
+
+            <h2>9. Privacy Policy Updates</h2>
+            
+            <p>We may update this Privacy Policy periodically. When updated, we will:</p>
+            <ul>
+                <li>Notify you in the app</li>
+                <li>Update the "Last Updated" date at the top of this page</li>
+                <li>Ask for your re-confirmation if significant changes are made</li>
+            </ul>
+            
+            <p>Continued use of the app indicates your acceptance of the updated Privacy Policy.</p>
 
             <div class="contact">
-                <h2>8. Contact Us</h2>
+                <h2>10. Contact Us</h2>
                 
-                <p>If you have any questions, comments, or requests regarding this Privacy Policy or your personal data, please contact us:</p>
+                <p>If you have any questions, comments, or requests about this Privacy Policy, please contact us:</p>
                 
-                <p><strong>Email</strong>: jiangfei19831023@126.com</p>
-                <p><strong>Response Time</strong>: We will respond within 24-48 hours of receiving your request</p>
+                <p><strong>Developer:</strong> Alex Jiang</p>
+                <p><strong>Email:</strong> <a href="mailto:outlook2007@outlook.com">outlook2007@outlook.com</a></p>
                 
-                <p>If you wish to exercise your privacy rights (access, delete, correct data, etc.), please include in your email:</p>
-                <ul>
-                    <li>Your request type (access/delete/correct/other)</li>
-                    <li>Relevant app information</li>
-                    <li>Any information that helps us process your request</li>
-                </ul>
+                <p>We will respond to your request as soon as possible (usually within 30 days).</p>
             </div>
 
             <div class="highlight">
-                <h2>9. Summary</h2>
-                
-                <p><strong>PatLock Commitments</strong>:</p>
-                <ul>
-                    <li><span class="checkmark">✓</span> Data stored in your private iCloud space</li>
-                    <li><span class="checkmark">✓</span> Completely anonymous, no personal identity</li>
-                    <li><span class="checkmark">✓</span> You can view and delete data anytime</li>
-                    <li><span class="checkmark">✓</span> Compliant with GDPR, CCPA, and COPPA</li>
-                    <li><span class="checkmark">✓</span> Never sell your data</li>
-                    <li><span class="checkmark">✓</span> Transparent, controllable, secure</li>
-                </ul>
-                
-                <p><strong>Your Privacy, Our Responsibility.</strong></p>
+                <p><strong>🔒 Our Commitment</strong></p>
+                <p>We promise to always put your privacy first. All data collection is optional, anonymous, and transparent. You always have complete control.</p>
             </div>
-
-            <hr style="margin: 40px 0; border: none; border-top: 1px solid #d2d2d7;">
-            
-            <p style="text-align: center; color: #86868b; font-size: 14px;">
-                This Privacy Policy was last updated on October 16, 2025 (🔒 Privacy-Optimized)<br>
-                PatLock © 2025 All Rights Reserved
-            </p>
         </div>
     </div>
 
     <script>
-        // 语言切换功能
         function switchLanguage(lang) {
             // 隐藏所有内容
             document.querySelectorAll('.lang-content').forEach(content => {
@@ -601,33 +653,14 @@
             });
             
             // 显示选中的语言内容
-            document.getElementById('content-' + lang).classList.add('active');
-            document.getElementById('btn-' + lang).classList.add('active');
-            
-            // 更新HTML lang属性
-            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-            
-            // 保存用户选择到localStorage
-            localStorage.setItem('preferredLanguage', lang);
-        }
-        
-        // 页面加载时的初始化
-        function initLanguage() {
-            // 检查localStorage中的用户偏好
-            let preferredLang = localStorage.getItem('preferredLanguage');
-            
-            // 如果没有保存的偏好，检测浏览器语言
-            if (!preferredLang) {
-                const browserLang = navigator.language || navigator.userLanguage;
-                preferredLang = browserLang.startsWith('zh') ? 'zh' : 'en';
+            if (lang === 'zh') {
+                document.getElementById('content-zh').classList.add('active');
+                document.querySelectorAll('.lang-btn')[0].classList.add('active');
+            } else {
+                document.getElementById('content-en').classList.add('active');
+                document.querySelectorAll('.lang-btn')[1].classList.add('active');
             }
-            
-            // 应用语言设置
-            switchLanguage(preferredLang);
         }
-        
-        // 页面加载完成后初始化
-        document.addEventListener('DOMContentLoaded', initLanguage);
     </script>
 </body>
 </html>
